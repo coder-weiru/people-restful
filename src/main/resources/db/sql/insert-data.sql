@@ -1,0 +1,20 @@
+INSERT INTO families VALUES (1, 'Doe');
+INSERT INTO families VALUES (2, 'Smith');
+INSERT INTO families VALUES (3, 'Johnson');
+
+INSERT INTO persons VALUES (1, 'John Doe', 1);
+INSERT INTO persons VALUES (2, 'Jane Doe', 1);
+INSERT INTO persons VALUES (3, 'Elaine Smith', 2);
+INSERT INTO persons VALUES (4, 'Katy Johnson', null);
+INSERT INTO persons VALUES (5, 'Jon Danver', null);
+INSERT INTO persons VALUES (6, 'Dan Kooper', null);
+INSERT INTO persons VALUES (7, 'Mose Calise', null);
+INSERT INTO persons VALUES (8, 'Jodi Urbano', null);
+INSERT INTO persons VALUES (9, 'Nichol Albrecht', null);
+INSERT INTO persons VALUES (10, 'Ricky Simington', null);
+INSERT INTO persons VALUES (11, 'Eugene Mayberry', null);
+INSERT INTO persons VALUES (12, 'Chuck Newcombe', null);
+INSERT INTO persons VALUES (13, 'Dara Demeo', null);
+INSERT INTO persons VALUES (14, 'Sean Redinger', null);
+INSERT INTO persons VALUES (15, 'Earlene Domina', null);
+INSERT INTO persons VALUES (16, 'Alyson Yearta', null);
