@@ -24,7 +24,7 @@ public class Family implements Serializable {
 	@Override
 	public String toString() {
 		return new StringBuilder("Family[").append("name: ").append(getName())
-				.append(", fid: ").append(getFid()).toString();
+				.append(", fid: ").append(getFid()).append("]").toString();
 	}
 
 }

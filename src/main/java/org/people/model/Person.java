@@ -37,10 +37,11 @@ public class Person implements Serializable {
 		this.family = family;
 	}
 
+	@Override
 	public String toString() {
 		return new StringBuilder("Person[").append("name: ").append(getName())
 				.append(", pid: ").append(getPid()).append(", family: ")
-				.append(getFamily()).toString();
+				.append(getFamily()).append("]").toString();
 	}
 
 }
