@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PeopleServiceImpl implements PeopleService {
 
+	private static final String FAMILY_EXISTS_ERROR_MESSAGE = "Family with name %s exists in the system, please enter a different name.";
+	private static final String PERSON_EXISTS_ERROR_MESSAGE = "Person with name %s exists in the system, please enter a different name.";
+
 	@Autowired
 	private PeopleMapper peopleMapper;
 
@@ -19,13 +22,32 @@ public class PeopleServiceImpl implements PeopleService {
 	}
 
 	@Override
-	public void addFamily(Family family) {
+	@Transactional
+	public void addFamily(Family family) throws FamilyExistsException {
+		String name = family.getName();
+		List<Family> list = peopleMapper.findFamily(name);
+		for (Family f : list) {
+			if (name.equalsIgnoreCase(f.getName())) {
+				throw new FamilyExistsException(String.format(
+						FAMILY_EXISTS_ERROR_MESSAGE, name));
+			}
+		}
 		peopleMapper.addFamily(family);
 	}
 
 	@Override
-	public void updateFamily(Family family) {
+	public void updateFamily(Family family) throws FamilyExistsException {
+		String name = family.getName();
+		Long fid = family.getFid();
+		List<Family> list = peopleMapper.findFamily(name);
+		for (Family f : list) {
+			if (name.equalsIgnoreCase(f.getName()) && !(fid.equals(f.getFid()))) {
+				throw new FamilyExistsException(String.format(
+						FAMILY_EXISTS_ERROR_MESSAGE, name));
+			}
+		}
 		peopleMapper.updateFamily(family);
+
 	}
 
 	@Override
@@ -40,13 +62,30 @@ public class PeopleServiceImpl implements PeopleService {
 
 	@Override
 	@Transactional
-	public void addPerson(Person person) {
+	public void addPerson(Person person) throws PersonExistsException {
+		String name = person.getName();
+		List<Person> list = peopleMapper.findPerson(name);
+		for (Person p : list) {
+			if (name.equalsIgnoreCase(p.getName())) {
+				throw new PersonExistsException(String.format(
+						PERSON_EXISTS_ERROR_MESSAGE, name));
+			}
+		}
 		peopleMapper.addPerson(person);
 	}
 
 	@Override
-	public void updatePerson(Person Person) {
-		peopleMapper.updatePerson(Person);
+	public void updatePerson(Person person) throws PersonExistsException {
+		String name = person.getName();
+		Long pid = person.getPid();
+		List<Person> list = peopleMapper.findPerson(name);
+		for (Person p : list) {
+			if (name.equalsIgnoreCase(p.getName()) && !(pid.equals(p.getPid()))) {
+				throw new PersonExistsException(String.format(
+						PERSON_EXISTS_ERROR_MESSAGE, name));
+			}
+		}
+		peopleMapper.updatePerson(person);
 	}
 
 	@Override

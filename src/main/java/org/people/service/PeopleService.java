@@ -7,17 +7,17 @@ import org.people.model.Person;
 
 public interface PeopleService {
 
-	void addFamily(Family family);
+	void addFamily(Family family) throws FamilyExistsException;
 
-	void updateFamily(Family family);
+	void updateFamily(Family family) throws FamilyExistsException;
 
 	List<Family> findFamily(String name);
 
 	Family getFamily(Long fid);
 
-	void addPerson(Person person);
+	void addPerson(Person person) throws PersonExistsException;
 
-	void updatePerson(Person person);
+	void updatePerson(Person person) throws PersonExistsException;
 
 	List<Person> findPerson(String name);
 
