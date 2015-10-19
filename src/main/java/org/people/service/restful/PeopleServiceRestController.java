@@ -27,13 +27,13 @@ public class PeopleServiceRestController {
 	private PeopleService peopleService;
 
 	@RequestMapping(value = "/family", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void addFamily(Family family) throws FamilyExistsException {
-		peopleService.addFamily(family);
+	public Family addFamily(Family family) throws FamilyExistsException {
+		return peopleService.addFamily(family);
 	}
 
 	@RequestMapping(value = "/family/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void updateFamily(Family family) throws FamilyExistsException {
-		peopleService.updateFamily(family);
+	public Family updateFamily(Family family) throws FamilyExistsException {
+		return peopleService.updateFamily(family);
 	}
 
 	@RequestMapping(value = "/family/find", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -48,13 +48,13 @@ public class PeopleServiceRestController {
 	}
 
 	@RequestMapping(value = "/person", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void addPerson(Person person) throws PersonExistsException {
-		peopleService.addPerson(person);
+	public Person addPerson(Person person) throws PersonExistsException {
+		return peopleService.addPerson(person);
 	}
 
 	@RequestMapping(value = "/person/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void updatePerson(Person person) throws PersonExistsException {
-		peopleService.updatePerson(person);
+	public Person updatePerson(Person person) throws PersonExistsException {
+		return peopleService.updatePerson(person);
 	}
 
 	@RequestMapping(value = "/person/find", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

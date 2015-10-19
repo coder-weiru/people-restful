@@ -23,7 +23,7 @@ public class PeopleServiceImpl implements PeopleService {
 
 	@Override
 	@Transactional
-	public void addFamily(Family family) throws FamilyExistsException {
+	public Family addFamily(Family family) throws FamilyExistsException {
 		String name = family.getName();
 		List<Family> list = peopleMapper.findFamily(name);
 		for (Family f : list) {
@@ -33,10 +33,11 @@ public class PeopleServiceImpl implements PeopleService {
 			}
 		}
 		peopleMapper.addFamily(family);
+		return family;
 	}
 
 	@Override
-	public void updateFamily(Family family) throws FamilyExistsException {
+	public Family updateFamily(Family family) throws FamilyExistsException {
 		String name = family.getName();
 		Long fid = family.getFid();
 		List<Family> list = peopleMapper.findFamily(name);
@@ -47,7 +48,7 @@ public class PeopleServiceImpl implements PeopleService {
 			}
 		}
 		peopleMapper.updateFamily(family);
-
+		return family;
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class PeopleServiceImpl implements PeopleService {
 
 	@Override
 	@Transactional
-	public void addPerson(Person person) throws PersonExistsException {
+	public Person addPerson(Person person) throws PersonExistsException {
 		String name = person.getName();
 		List<Person> list = peopleMapper.findPerson(name);
 		for (Person p : list) {
@@ -72,10 +73,11 @@ public class PeopleServiceImpl implements PeopleService {
 			}
 		}
 		peopleMapper.addPerson(person);
+		return person;
 	}
 
 	@Override
-	public void updatePerson(Person person) throws PersonExistsException {
+	public Person updatePerson(Person person) throws PersonExistsException {
 		String name = person.getName();
 		Long pid = person.getPid();
 		List<Person> list = peopleMapper.findPerson(name);
@@ -86,6 +88,7 @@ public class PeopleServiceImpl implements PeopleService {
 			}
 		}
 		peopleMapper.updatePerson(person);
+		return person;
 	}
 
 	@Override

@@ -57,14 +57,18 @@ public class PeopleServiceRestControllerTest {
 	@Test
 	public final void testAddFamily() throws Exception {
 		Family family = createSampleFamily();
-		Mockito.doNothing().when(peopleServiceMock)
-				.addFamily(Mockito.any(Family.class));
+		Mockito.when(peopleServiceMock.addFamily(Mockito.any(Family.class)))
+				.thenReturn(family);
+
 		mockMvc.perform(
 				MockMvcRequestBuilders.post("/family")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(JSONUtil.toJSonString(family).getBytes()))
 				.andDo(MockMvcResultHandlers.print())
-				.andExpect(MockMvcResultMatchers.status().isOk());
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(
+						MockMvcResultMatchers.content().string(
+								JSONUtil.toJSonString(family)));
 	}
 
 	@Test
@@ -86,14 +90,18 @@ public class PeopleServiceRestControllerTest {
 	@Test
 	public final void testUpdateFamily() throws Exception {
 		Family family = createSampleFamily();
-		Mockito.doNothing().when(peopleServiceMock)
-				.updateFamily(Mockito.any(Family.class));
+		Mockito.when(peopleServiceMock.updateFamily(Mockito.any(Family.class)))
+				.thenReturn(family);
+
 		mockMvc.perform(
 				MockMvcRequestBuilders.post("/family/update")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(JSONUtil.toJSonString(family).getBytes()))
 				.andDo(MockMvcResultHandlers.print())
-				.andExpect(MockMvcResultMatchers.status().isOk());
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(
+						MockMvcResultMatchers.content().string(
+								JSONUtil.toJSonString(family)));
 	}
 
 	@Test
@@ -138,14 +146,17 @@ public class PeopleServiceRestControllerTest {
 	@Test
 	public final void testAddPerson() throws Exception {
 		Person person = createSamplePerson();
-		Mockito.doNothing().when(peopleServiceMock)
-				.addPerson(Mockito.any(Person.class));
+		Mockito.when(peopleServiceMock.addPerson(Mockito.any(Person.class)))
+				.thenReturn(person);
 		mockMvc.perform(
 				MockMvcRequestBuilders.post("/person")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(JSONUtil.toJSonString(person).getBytes()))
 				.andDo(MockMvcResultHandlers.print())
-				.andExpect(MockMvcResultMatchers.status().isOk());
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(
+						MockMvcResultMatchers.content().string(
+								JSONUtil.toJSonString(person)));
 	}
 
 	@Test
@@ -167,14 +178,17 @@ public class PeopleServiceRestControllerTest {
 	@Test
 	public final void testUpdatePerson() throws Exception {
 		Person person = createSamplePerson();
-		Mockito.doNothing().when(peopleServiceMock)
-				.updatePerson(Mockito.any(Person.class));
+		Mockito.when(peopleServiceMock.updatePerson(Mockito.any(Person.class)))
+				.thenReturn(person);
 		mockMvc.perform(
 				MockMvcRequestBuilders.post("/person/update")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(JSONUtil.toJSonString(person).getBytes()))
 				.andDo(MockMvcResultHandlers.print())
-				.andExpect(MockMvcResultMatchers.status().isOk());
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(
+						MockMvcResultMatchers.content().string(
+								JSONUtil.toJSonString(person)));
 	}
 
 	@Test
