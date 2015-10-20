@@ -82,7 +82,7 @@ public class PeopleMapperSQLProvider {
 					SET("name = #{name, jdbcType=VARCHAR}");
 				}
 				if (person.getFamily() != null) {
-					SET("family_id = #{password, jdbcType=VARCHAR}");
+					SET("family_id = #{family.fid, jdbcType=BIGINT}");
 				}
 				WHERE("pid = #{pid}");
 			}
