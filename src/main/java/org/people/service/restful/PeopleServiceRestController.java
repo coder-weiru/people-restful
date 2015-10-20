@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -26,13 +27,20 @@ public class PeopleServiceRestController {
 	private PeopleService peopleService;
 
 	@RequestMapping(value = "/family", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Family addFamily(Family family) throws FamilyExistsException {
+	public Family addFamily(@RequestBody Family family)
+			throws FamilyExistsException {
 		return peopleService.addFamily(family);
 	}
 
 	@RequestMapping(value = "/family/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Family updateFamily(Family family) throws FamilyExistsException {
+	public Family updateFamily(@RequestBody Family family)
+			throws FamilyExistsException {
 		return peopleService.updateFamily(family);
+	}
+
+	@RequestMapping(value = "/family/find", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Family> findFamily() {
+		return peopleService.findFamily("");
 	}
 
 	@RequestMapping(value = "/family/find/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -46,13 +54,20 @@ public class PeopleServiceRestController {
 	}
 
 	@RequestMapping(value = "/person", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person addPerson(Person person) throws PersonExistsException {
+	public Person addPerson(@RequestBody Person person)
+			throws PersonExistsException {
 		return peopleService.addPerson(person);
 	}
 
 	@RequestMapping(value = "/person/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person updatePerson(Person person) throws PersonExistsException {
+	public Person updatePerson(@RequestBody Person person)
+			throws PersonExistsException {
 		return peopleService.updatePerson(person);
+	}
+
+	@RequestMapping(value = "/person/find", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Person> findPerson() {
+		return peopleService.findPerson("");
 	}
 
 	@RequestMapping(value = "/person/find/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
