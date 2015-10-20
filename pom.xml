@@ -290,6 +290,8 @@
 				<version>2.6</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<attachClasses>true</attachClasses>
+                <classesClassifier>classes</classesClassifier>
 				</configuration>
 			</plugin>
 			<plugin>
