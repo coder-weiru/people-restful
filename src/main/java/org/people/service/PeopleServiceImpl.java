@@ -14,10 +14,10 @@ public class PeopleServiceImpl implements PeopleService {
 	private static final String FAMILY_EXISTS_ERROR_MESSAGE = "Family with name %s exists in the system, please enter a different name.";
 	private static final String PERSON_EXISTS_ERROR_MESSAGE = "Person with name %s exists in the system, please enter a different name.";
 
-	@Autowired
 	private PeopleMapper peopleMapper;
 
-	public void setPersonMapper(PeopleMapper peopleMapper) {
+	@Autowired
+	public void setPeopleMapper(PeopleMapper peopleMapper) {
 		this.peopleMapper = peopleMapper;
 	}
 

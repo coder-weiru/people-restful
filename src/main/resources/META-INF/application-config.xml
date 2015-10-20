@@ -20,9 +20,13 @@
 		<property name="basePackage" value="org.people.service" />
 	</bean>
 
-	<bean id="personMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="peopleMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="org.people.service.PeopleMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="peopleService" class="org.people.service.PeopleServiceImpl">
+		<property name="peopleMapper" ref="peopleMapper" />
 	</bean>
 	
 	<context:component-scan base-package="org.people.service" />
