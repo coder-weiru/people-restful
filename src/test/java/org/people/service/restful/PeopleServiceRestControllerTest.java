@@ -110,11 +110,10 @@ public class PeopleServiceRestControllerTest {
 		List<Family> list = new ArrayList<Family>();
 		list.add(family);
 
-		Mockito.when(peopleServiceMock.findFamily("Andy")).thenReturn(list);
+		Mockito.when(peopleServiceMock.findFamily("Weber")).thenReturn(list);
 		mockMvc.perform(
-				MockMvcRequestBuilders.get("/family/find")
-						.accept(MediaType.APPLICATION_JSON)
-						.param("name", "Andy"))
+				MockMvcRequestBuilders.get("/family/find/Weber").accept(
+						MediaType.APPLICATION_JSON))
 				.andDo(MockMvcResultHandlers.print())
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(
@@ -199,9 +198,8 @@ public class PeopleServiceRestControllerTest {
 
 		Mockito.when(peopleServiceMock.findPerson("Andy")).thenReturn(list);
 		mockMvc.perform(
-				MockMvcRequestBuilders.get("/person/find")
-						.accept(MediaType.APPLICATION_JSON)
-						.param("name", "Andy"))
+				MockMvcRequestBuilders.get("/person/find/Andy").accept(
+						MediaType.APPLICATION_JSON))
 				.andDo(MockMvcResultHandlers.print())
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(
