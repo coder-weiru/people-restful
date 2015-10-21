@@ -86,12 +86,13 @@ public class PeopleServiceRestController {
 	}
 
 	@RequestMapping(value = "/person/{pid}/family/{fid}/delete", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public void removePersonFromFamily(Long pid, Long fid) {
+	public void removePersonFromFamily(@PathVariable Long pid,
+			@PathVariable Long fid) {
 		peopleService.removePersonFromFamily(pid, fid);
 	}
 
 	@RequestMapping(value = "/family/{fid}/people", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Person> getFamilyPeople(Long fid) {
+	public List<Person> getFamilyPeople(@PathVariable Long fid) {
 		return peopleService.getFamilyPeople(fid);
 	}
 
