@@ -80,18 +80,18 @@ public class PeopleServiceRestController {
 		return peopleService.getPerson(pid);
 	}
 
-	@RequestMapping(value = "/person/{pid}/family/{fid}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/add/person/{pid}/family/{fid}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void addPersonToFamily(@PathVariable Long pid, @PathVariable Long fid) {
 		peopleService.addPersonToFamily(pid, fid);
 	}
 
-	@RequestMapping(value = "/person/{pid}/family/{fid}/delete", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/del/person/{pid}/family/{fid}", method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void removePersonFromFamily(@PathVariable Long pid,
 			@PathVariable Long fid) {
 		peopleService.removePersonFromFamily(pid, fid);
 	}
 
-	@RequestMapping(value = "/family/{fid}/people", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/familyPeople/{fid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Person> getFamilyPeople(@PathVariable Long fid) {
 		return peopleService.getFamilyPeople(fid);
 	}

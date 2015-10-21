@@ -236,7 +236,7 @@ public class PeopleServiceRestControllerTest {
 				.addPersonToFamily(Mockito.any(Long.class),
 						Mockito.any(Long.class));
 		mockMvc.perform(
-				MockMvcRequestBuilders.get("/person/11/family/22")
+				MockMvcRequestBuilders.get("/add/person/11/family/22")
 						.accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON))
 				.andDo(MockMvcResultHandlers.print())
@@ -250,7 +250,7 @@ public class PeopleServiceRestControllerTest {
 				.removePersonFromFamily(Mockito.any(Long.class),
 						Mockito.any(Long.class));
 		mockMvc.perform(
-				MockMvcRequestBuilders.get("/person/11/family/22/delete")
+				MockMvcRequestBuilders.get("/del/person/11/family/22")
 						.accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON))
 				.andDo(MockMvcResultHandlers.print())
@@ -266,7 +266,7 @@ public class PeopleServiceRestControllerTest {
 		Mockito.when(peopleServiceMock.getFamilyPeople(Mockito.any(Long.class)))
 				.thenReturn(list);
 		mockMvc.perform(
-				MockMvcRequestBuilders.get("/family/22/people")
+				MockMvcRequestBuilders.get("/familyPeople/22")
 						.accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON))
 				.andDo(MockMvcResultHandlers.print())
