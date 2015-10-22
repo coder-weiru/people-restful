@@ -11,7 +11,7 @@ A sample REST service project using Spring frameworks
 ###2. Development IDE
 * Spring Tool Suite (STS)
 
-###3. To Run this project locally
+###3. To run this project locally
 * Using Spring Tool Suite
  1. git clone https://github.com/coder-weiru/people-restful
  2. import people-restful into STS via **existing maven projects into workspace** option.
