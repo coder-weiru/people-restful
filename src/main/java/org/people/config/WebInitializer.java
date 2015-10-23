@@ -26,7 +26,7 @@ public class WebInitializer extends
 		corsFilter.setInitParameter("cors.allowOrigin", "*");
 		corsFilter.setInitParameter("cors.allowSubdomains", "false");
 		corsFilter.setInitParameter("cors.supportedMethods",
-				"GET, HEAD, POST, OPTIONS");
+				"GET, HEAD, POST, DELETE, OPTIONS");
 		corsFilter.setInitParameter("cors.supportedHeaders", "*");
 		corsFilter
 				.setInitParameter("cors.exposedHeaders", "X-Test-1, X-Test-2");
