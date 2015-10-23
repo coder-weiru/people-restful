@@ -15,6 +15,8 @@ public interface PeopleService {
 
 	Family getFamily(Long fid);
 
+	void deleteFamily(Long fid);
+	
 	Person addPerson(Person person) throws PersonExistsException;
 
 	Person updatePerson(Person person) throws PersonExistsException;
@@ -22,6 +24,8 @@ public interface PeopleService {
 	List<Person> findPerson(String name);
 
 	Person getPerson(Long pid);
+	
+	void deletePerson(Long pid);
 
 	void addPersonToFamily(Long pid, Long fid);
 

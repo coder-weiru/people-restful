@@ -62,6 +62,11 @@ public class PeopleServiceImpl implements PeopleService {
 	}
 
 	@Override
+	public void deleteFamily(Long fid) {
+		peopleMapper.deleteFamily(fid);
+	}
+
+	@Override
 	@Transactional
 	public Person addPerson(Person person) throws PersonExistsException {
 		String name = person.getName();
@@ -99,6 +104,11 @@ public class PeopleServiceImpl implements PeopleService {
 	@Override
 	public Person getPerson(Long pid) {
 		return peopleMapper.getPerson(pid);
+	}
+
+	@Override
+	public void deletePerson(Long pid) {
+		peopleMapper.deletePerson(pid);
 	}
 
 	@Override

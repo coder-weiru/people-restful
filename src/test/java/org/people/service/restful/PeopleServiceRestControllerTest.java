@@ -143,6 +143,19 @@ public class PeopleServiceRestControllerTest {
 	}
 
 	@Test
+	public final void testDeleteFamily() throws Exception {
+		Mockito.doNothing().when(peopleServiceMock)
+				.deleteFamily(Mockito.any(Long.class));
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.delete("/delFamily/100").contentType(
+						MediaType.APPLICATION_JSON))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.content().string(""));
+	}
+
+	@Test
 	public final void testAddPerson() throws Exception {
 		Person person = createSamplePerson();
 		Mockito.when(peopleServiceMock.addPerson(Mockito.any(Person.class)))
@@ -227,6 +240,19 @@ public class PeopleServiceRestControllerTest {
 				.andExpect(
 						MockMvcResultMatchers.content().string(
 								JSONUtil.toJSonString(person)));
+	}
+
+	@Test
+	public final void testDeletePerson() throws Exception {
+		Mockito.doNothing().when(peopleServiceMock)
+				.deletePerson(Mockito.any(Long.class));
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.delete("/delPerson/200").contentType(
+						MediaType.APPLICATION_JSON))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.content().string(""));
 	}
 
 	@Test

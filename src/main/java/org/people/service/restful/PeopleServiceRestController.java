@@ -53,6 +53,11 @@ public class PeopleServiceRestController {
 		return peopleService.getFamily(fid);
 	}
 
+	@RequestMapping(value = "/delFamily/{fid}", method = RequestMethod.DELETE)
+	public void deleteFamily(@PathVariable Long fid) {
+		peopleService.deleteFamily(fid);
+	}
+
 	@RequestMapping(value = "/person", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Person addPerson(@RequestBody Person person)
 			throws PersonExistsException {
@@ -78,6 +83,11 @@ public class PeopleServiceRestController {
 	@RequestMapping(value = "/person/{pid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Person getPerson(@PathVariable Long pid) {
 		return peopleService.getPerson(pid);
+	}
+
+	@RequestMapping(value = "/delPerson/{pid}", method = RequestMethod.DELETE)
+	public void deletePerson(@PathVariable Long pid) {
+		peopleService.deletePerson(pid);
 	}
 
 	@RequestMapping(value = "/add/person/{pid}/family/{fid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

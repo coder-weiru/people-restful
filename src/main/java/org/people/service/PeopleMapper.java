@@ -2,6 +2,7 @@ package org.people.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Options;
@@ -35,6 +36,9 @@ public interface PeopleMapper {
 	@SelectProvider(type = PeopleMapperSQLProvider.class, method = "getFamily")
 	Family getFamily(Long fid);
 
+	@DeleteProvider(type=PeopleMapperSQLProvider.class, method="deleteFamily")
+    void deleteFamily(Long fid);
+	
 	@InsertProvider(type = PeopleMapperSQLProvider.class, method = "addPerson")
 	@Options(useGeneratedKeys = true, keyProperty = "pid", flushCache = true)
 	void addPerson(Person person);
@@ -57,6 +61,9 @@ public interface PeopleMapper {
 	@SelectProvider(type = PeopleMapperSQLProvider.class, method = "getPerson")
 	Person getPerson(Long pid);
 
+	@DeleteProvider(type=PeopleMapperSQLProvider.class, method="deletePerson")
+    void deletePerson(Long pid);
+	
 	@InsertProvider(type = PeopleMapperSQLProvider.class, method = "addPersonToFamily")
 	public void addPersonToFamily(@Param("pid") Long pid, @Param("fid") Long fid);
 

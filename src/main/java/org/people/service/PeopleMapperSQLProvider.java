@@ -51,6 +51,15 @@ public class PeopleMapperSQLProvider {
 		}.toString();
 	}
 
+	public String deleteFamily(final Long fid) {
+		return new SQL() {
+			{
+				DELETE_FROM("families");
+				WHERE("fid = #{fid}");
+			}
+		}.toString();
+	}
+
 	public String findPerson(final String name) {
 		return new SQL() {
 			{
@@ -96,6 +105,15 @@ public class PeopleMapperSQLProvider {
 				INSERT_INTO("persons");
 				VALUES("name", "#{name, jdbcType=VARCHAR}");
 				VALUES("family_id", "#{family.fid, jdbcType=BIGINT}");
+			}
+		}.toString();
+	}
+
+	public String deletePerson(final Long pid) {
+		return new SQL() {
+			{
+				DELETE_FROM("persons");
+				WHERE("pid = #{pid}");
 			}
 		}.toString();
 	}

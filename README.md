@@ -48,6 +48,10 @@ To find families by name
 
 To get a family by a family id
 	
+```/delFamily/{fid}```    [DELETE]
+
+To delete a family by a family id
+	
 ```/person```   [POST]
 
 To add a new person
@@ -67,6 +71,10 @@ To find people by name
 ```/person/{pid}```    [GET]
 
 To get a person by a person id	
+
+```/delPerson/{pid}```    [DELETE]
+
+To delete a person by a person id
 	
 ```/add/person/{pid}/family/{fid}```    [GET]
 

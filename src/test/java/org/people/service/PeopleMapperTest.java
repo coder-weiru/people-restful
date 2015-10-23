@@ -89,6 +89,28 @@ public class PeopleMapperTest {
 	}
 
 	@Test
+	public final void testDeleteFamily() throws Exception {
+		dataPurger.execute(dataSource);
+
+		Family family = createSampleFamily();
+
+		peopleMapper.addFamily(family);
+
+		List<Family> familyList = peopleMapper.findFamily(family.getName());
+
+		assertEquals(familyList.size(), 1);
+
+		assertNotNull(familyList.get(0).getFid());
+		assertEquals(familyList.get(0).getName(), family.getName());
+
+		peopleMapper.deleteFamily(family.getFid());
+
+		familyList = peopleMapper.findFamily(family.getName());
+
+		assertEquals(familyList.size(), 0);
+	}
+
+	@Test
 	public final void testAddPerson() throws Exception {
 		dataPurger.execute(dataSource);
 
@@ -159,6 +181,29 @@ public class PeopleMapperTest {
 
 		assertEquals(updated.getName(), "New Name");
 
+	}
+
+	@Test
+	public final void testDeletePerson() throws Exception {
+		dataPurger.execute(dataSource);
+
+		Person person = createSamplePerson();
+
+		peopleMapper.addPerson(person);
+
+		List<Person> personList = peopleMapper.findPerson(person.getName());
+
+		assertEquals(personList.size(), 1);
+
+		assertNotNull(personList.get(0).getPid());
+		assertEquals(personList.get(0).getName(), person.getName());
+		assertNull(personList.get(0).getFamily());
+
+		peopleMapper.deletePerson(person.getPid());
+
+		personList = peopleMapper.findPerson(person.getName());
+
+		assertEquals(personList.size(), 0);
 	}
 
 	@Test
